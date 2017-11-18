@@ -309,9 +309,11 @@ public class TabActivity extends AppCompatActivity {
             @Override
             public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
                 Log.d("kp0hyc_debug", "surface destroyed");
-                cameraDevice.close();
                 surface = null;
-                cameraDevice = null;
+                if (cameraDevice != null) {
+                    cameraDevice.close();
+                    cameraDevice = null;
+                }
             }
         }
     }
